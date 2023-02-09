@@ -1,24 +1,18 @@
-import { Component, PropsWithChildren } from 'react'
-import { View, Text } from '@tarojs/components'
-import './index.scss'
+import {View, Text, Button} from '@tarojs/components'
+import Taro from "@tarojs/taro";
 
-export default class Index extends Component<PropsWithChildren> {
-
-  componentWillMount () { }
-
-  componentDidMount () { }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
-  render () {
-    return (
-      <View className='index'>
-        <Text>Hello world!</Text>
-      </View>
-    )
-  }
+function Index() {
+  return (
+    <View>
+      <Text>Hello, World</Text>
+      <Button onClick={() => {
+        Taro.navigateTo({
+          url: '../curriculum/index'
+        }).then()
+      }}
+      >Click Me</Button>
+    </View>
+  )
 }
+
+export default Index
