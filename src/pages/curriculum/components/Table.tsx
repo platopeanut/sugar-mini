@@ -9,7 +9,6 @@ type TablePropsType = {
 }
 
 const Table: FC<TablePropsType> = (props) => {
-  console.log(props)
   return (
     <View style={{
       marginTop: "50px",

@@ -4,11 +4,8 @@ import { View } from '@tarojs/components';
 import Header from "./components/Header";
 import Table from "./components/Table";
 import Footer from "./components/Footer";
-import './index.scss'
 import {
   calcCurrWeek,
-  dateAddDays,
-  getDateMonth,
   getHeaderDates,
   getLessonViewItems
 } from "./util";
@@ -16,6 +13,7 @@ import {START_DATE} from "./repository";
 import {LessonDetailItem, LessonItem, LessonViewItem} from "./type";
 import {UserType} from "../../core/user";
 import LessonDetail from "./components/LessonDetail";
+import {dateAddDays, getDateMonth} from "../../utils/datetime";
 
 export default function Curriculum() {
   const [date, setDate] = useState(new Date());

@@ -1,8 +1,9 @@
 import {LessonItem, LessonViewItem} from "./type";
 import {UserType} from "../../core/user";
 import {parseWeekPeriod} from "./util";
+import {parseDate} from "../../utils/datetime";
 
-export const START_DATE: Date = new Date("2022-08-31 00:00:00 GMT+0800");
+export const START_DATE: Date = parseDate("2022-08-31");
 
 const LESSON_DATA : { "Li": LessonItem[], "Chen": LessonItem[] } = {
   "Li": [

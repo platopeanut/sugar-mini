@@ -2,13 +2,7 @@ import {LessonItem, LessonViewItem} from "./type";
 import {COLORS} from "../../core/theme";
 import {UserType} from "../../core/user";
 import {getAllLessonItems, getLessonItems} from "./repository";
-
-const DAY_OF_SECONDS = 60 * 60 * 24;
-
-// 获取date对应的month
-export function getDateMonth(date: Date = new Date()): number {
-  return date.getMonth() + 1;
-}
+import {calcDaysBetween, dateAddDays} from "../../utils/datetime";
 
 // 获取date对应的header dates
 export function getHeaderDates(date: Date = new Date()): number[] {
@@ -25,21 +19,6 @@ export function getHeaderDates(date: Date = new Date()): number[] {
 // 根据开学日期和当前日期计算当前是第几周
 export function calcCurrWeek(startDate: Date, currDate: Date = new Date()) : number {
   return Math.ceil(calcDaysBetween(currDate, startDate) / 7);
-}
-
-// 计算两个日期之间相隔的天数
-export function calcDaysBetween(date1: Date, date2: Date): number {
-  return (date1.getTime() - date2.getTime()) / (DAY_OF_SECONDS * 1000);
-}
-
-// 返回date加上seconds后的日期
-export function dateAddSeconds(date: Date, seconds: number): Date {
-  return new Date(date.getTime() + seconds * 1000);
-}
-
-// 返回date加上days后的日期
-export function dateAddDays(date: Date, days: number): Date {
-  return dateAddSeconds(date, days * DAY_OF_SECONDS);
 }
 
 export function parseDayOfWeek(dayOfWeek: string): number {
