@@ -24,7 +24,7 @@ const Header: FC<HeaderPropsType> = (props) => {
 
       display: "flex",
       flexDirection: "row",
-      boxShadow: "rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px"
+      boxShadow: "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px"
     }}
     >
       <View style={{

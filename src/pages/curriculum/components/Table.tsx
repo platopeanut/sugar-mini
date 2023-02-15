@@ -73,6 +73,6 @@ const TableIndex = () => {
   )
 }
 
-const CELL_HEIGHT = 65
+const CELL_HEIGHT = 60
 
 export default Table

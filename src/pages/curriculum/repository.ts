@@ -3,7 +3,7 @@ import {UserType} from "../../core/user";
 import {parseWeekPeriod} from "./util";
 import {parseDate} from "../../utils/datetime";
 
-export const START_DATE: Date = parseDate("2022-08-31");
+export const START_DATE: Date = parseDate("2023-02-20");
 
 const LESSON_DATA : { "Li": LessonItem[], "Chen": LessonItem[] } = {
   "Li": [
@@ -162,188 +162,172 @@ const LESSON_DATA : { "Li": LessonItem[], "Chen": LessonItem[] } = {
   ],
   "Chen": [
     {
-      "lessonName": "形势与政策5",
-      "teacherName": "赵灿林-[主讲];",
-      "classroom": "D1125",
-      "weekPeriod": "16-17",
-      "week": "一",
-      "dayPeriod": "6-7"
-    },
-    {
-      "lessonName": "形势与政策5",
-      "teacherName": "门秀红-[主讲];",
-      "classroom": "D1125",
-      "weekPeriod": "14-15",
-      "week": "一",
-      "dayPeriod": "6-7"
-    },
-    {
-      "lessonName": "人工智能导论",
-      "teacherName": "杨梦宁-[主讲];",
-      "classroom": "D1347",
-      "weekPeriod": "8-17",
-      "week": "三",
-      "dayPeriod": "1-2"
-    },
-    {
-      "lessonName": "人工智能导论",
-      "teacherName": "杨梦宁-[主讲];",
-      "classroom": "D1347",
-      "weekPeriod": "8-17",
+      "lessonName": "形势与政策6",
+      "teacherName": "罗秀英-[主讲];",
+      "classroom": "DYC410",
+      "weekPeriod": "14-17",
       "week": "一",
       "dayPeriod": "8-9"
     },
     {
-      "lessonName": "人工智能导论",
-      "teacherName": "杨梦宁-[主讲];",
+    "lessonName": "机器学习",
+    "teacherName": "王悦阳-[主讲];",
+    "classroom": "D1145",
+    "weekPeriod": "8-17",
+    "week": "五",
+    "dayPeriod": "3-4"
+    },
+    {
+      "lessonName": "机器学习",
+      "teacherName": "王悦阳-[主讲];",
+      "classroom": "D1145",
+      "weekPeriod": "7-16",
+      "week": "二",
+      "dayPeriod": "6-7"
+    },
+    {
+      "lessonName": "机器学习",
+      "teacherName": "王悦阳-[主讲];",
       "classroom": "软件工程实验室-DS1501",
+      "weekPeriod": "17-17",
+      "week": "二",
+      "dayPeriod": "6-9"
+    },
+    {
+      "lessonName": "机器学习",
+      "teacherName": "王悦阳-[主讲];",
+      "classroom": "软件工程实验室-DS1501",
+      "weekPeriod": "10-10,13-13,16-16",
+      "week": "五",
+      "dayPeriod": "10-13"
+    },
+    {
+      "lessonName": "软件项目管理",
+      "teacherName": "熊敏-[主讲];",
+      "classroom": "D1213",
+      "weekPeriod": "1-8",
+      "week": "二",
+      "dayPeriod": "8-9"
+    },
+    {
+      "lessonName": "软件项目管理",
+      "teacherName": "熊敏-[主讲];",
+      "classroom": "D1226",
+      "weekPeriod": "1-6,8-9",
+      "week": "五",
+      "dayPeriod": "8-9"
+    },
+    {
+      "lessonName": "数字图像处理",
+      "teacherName": "陈远-[主讲];",
+      "classroom": "D1244",
+      "weekPeriod": "9-15",
+      "week": "三",
+      "dayPeriod": "1-2"
+    },
+    {
+      "lessonName": "数字图像处理",
+      "teacherName": "陈远-[主讲];",
+      "classroom": "D1244",
+      "weekPeriod": "9-10,12-16",
+      "week": "一",
+      "dayPeriod": "1-2"
+    },
+    {
+      "lessonName": "数字图像处理",
+      "teacherName": "陈远-[主讲];",
+      "classroom": "",
+      "weekPeriod": "13-14",
+      "week": "",
+      "dayPeriod": ""
+    },
+    {
+      "lessonName": "数字图像处理",
+      "teacherName": "陈远-[主讲];",
+      "classroom": "数字媒体实验室-DS1503",
+      "weekPeriod": "15-15",
+      "week": "一",
+      "dayPeriod": "10-13"
+    },
+    {
+      "lessonName": "数字图像处理",
+      "teacherName": "陈远-[主讲];",
+      "classroom": "数字媒体实验室-DS1503",
+      "weekPeriod": "12-12",
+      "week": "六",
+      "dayPeriod": "1-4"
+    },
+    {
+      "lessonName": "软件架构与设计模式",
+      "teacherName": "蔡海尼-[主讲];",
+      "classroom": "D1145",
+      "weekPeriod": "9-10,12-16",
+      "week": "一",
+      "dayPeriod": "6-7"
+    },
+    {
+      "lessonName": "软件架构与设计模式",
+      "teacherName": "蔡海尼-[主讲];",
+      "classroom": "D1145",
+      "weekPeriod": "9-15",
+      "week": "三",
+      "dayPeriod": "6-7"
+    },
+    {
+      "lessonName": "软件架构与设计模式",
+      "teacherName": "蔡海尼-[主讲];",
+      "classroom": "软件工程实验室-DS1501",
+      "weekPeriod": "10-10,12-13",
+      "week": "一",
+      "dayPeriod": "8-9"
+    },
+    {
+      "lessonName": "软件架构与设计模式",
+      "teacherName": "蔡海尼-[主讲];",
+      "classroom": "软件工程实验室-DS1501",
+      "weekPeriod": "14-14",
+      "week": "四",
+      "dayPeriod": "8-9"
+    },
+    {
+      "lessonName": "软件架构与设计模式",
+      "teacherName": "蔡海尼-[主讲];",
+      "classroom": "",
       "weekPeriod": "12-15",
-      "week": "四",
-      "dayPeriod": "1-4"
+      "week": "",
+      "dayPeriod": ""
     },
     {
-      "lessonName": "软件需求分析",
-      "teacherName": "张毅-[主讲];",
-      "classroom": "D1243",
-      "weekPeriod": "1-5,7-9",
-      "week": "二",
-      "dayPeriod": "1-2"
-    },
-    {
-      "lessonName": "软件需求分析",
-      "teacherName": "张毅-[主讲];",
-      "classroom": "D1243",
-      "weekPeriod": "1-5,7-9",
-      "week": "四",
-      "dayPeriod": "1-2"
-    },
-    {
-      "lessonName": "信息安全导论",
-      "teacherName": "胡海波-[主讲];",
-      "classroom": "D1144",
-      "weekPeriod": "1-5,7-9",
-      "week": "二",
-      "dayPeriod": "6-7"
-    },
-    {
-      "lessonName": "信息安全导论",
-      "teacherName": "胡海波-[主讲];",
-      "classroom": "D1143",
-      "weekPeriod": "1-5,7-9",
-      "week": "五",
+      "lessonName": "软件测试",
+      "teacherName": "雷晏-[主讲];",
+      "classroom": "D1345",
+      "weekPeriod": "1-6",
+      "week": "三",
       "dayPeriod": "3-4"
     },
     {
-      "lessonName": "计算机图形学",
-      "teacherName": "杨梦宁-[主讲];",
-      "classroom": "D1138",
-      "weekPeriod": "1-5,7-11",
-      "week": "三",
-      "dayPeriod": "6-7"
-    },
-    {
-      "lessonName": "计算机图形学",
-      "teacherName": "杨梦宁-[主讲];",
-      "classroom": "D1239",
-      "weekPeriod": "1-2,4-5,7-12",
+      "lessonName": "软件测试",
+      "teacherName": "雷晏-[主讲];",
+      "classroom": "D1345",
+      "weekPeriod": "1-6",
       "week": "一",
-      "dayPeriod": "6-7"
-    },
-    {
-      "lessonName": "计算机图形学",
-      "teacherName": "杨梦宁-[主讲];",
-      "classroom": "软件工程实验室-DS1502",
-      "weekPeriod": "4-4,6-8",
-      "week": "六",
-      "dayPeriod": "6-9"
-    },
-    {
-      "lessonName": "Web开发技术",
-      "teacherName": "王成良-[主讲];",
-      "classroom": "D1336",
-      "weekPeriod": "1-5,7-7",
-      "week": "四",
       "dayPeriod": "3-4"
     },
     {
-      "lessonName": "Web开发技术",
-      "teacherName": "王成良-[主讲];",
-      "classroom": "D1139",
-      "weekPeriod": "1-5,7-7",
-      "week": "二",
-      "dayPeriod": "3-4"
-    },
-    {
-      "lessonName": "Web开发技术",
-      "teacherName": "王成良-[主讲];",
+      "lessonName": "软件测试",
+      "teacherName": "雷晏-[主讲];",
       "classroom": "软件工程实验室-DS1501",
-      "weekPeriod": "3-4,6-7",
-      "week": "六",
-      "dayPeriod": "1-4"
-    },
-    {
-      "lessonName": "多媒体技术",
-      "teacherName": "桑军-[主讲];",
-      "classroom": "D1138",
-      "weekPeriod": "11-16",
-      "week": "二",
-      "dayPeriod": "8-9"
-    },
-    {
-      "lessonName": "多媒体技术",
-      "teacherName": "桑军-[主讲];",
-      "classroom": "D1138",
-      "weekPeriod": "11-16",
+      "weekPeriod": "3-6",
       "week": "五",
-      "dayPeriod": "1-2"
+      "dayPeriod": "10-13"
     },
     {
-      "lessonName": "多媒体技术",
-      "teacherName": "桑军-[主讲];",
-      "classroom": "软件工程实验室-DS1501",
-      "weekPeriod": "13-16",
-      "week": "六",
-      "dayPeriod": "1-4"
-    },
-    {
-      "lessonName": "嵌入式体系结构",
-      "teacherName": "刘寄-[主讲];",
-      "classroom": "软件工程实验室-DS1501",
-      "weekPeriod": "10-17",
-      "week": "二",
-      "dayPeriod": "6-7"
-    },
-    {
-      "lessonName": "嵌入式体系结构",
-      "teacherName": "刘寄-[主讲];",
-      "classroom": "软件工程实验室-DS1501",
-      "weekPeriod": "10-17",
-      "week": "五",
-      "dayPeriod": "3-4"
-    },
-    {
-      "lessonName": "嵌入式体系结构",
-      "teacherName": "刘寄-[主讲];",
-      "classroom": "软件工程实验室-DS1501",
-      "weekPeriod": "10-12,17-17",
-      "week": "六",
-      "dayPeriod": "1-4"
-    },
-    {
-      "lessonName": "嵌入式体系结构",
-      "teacherName": "刘寄-[主讲];",
-      "classroom": "软件工程实验室-DS1501",
-      "weekPeriod": "13-16",
-      "week": "六",
-      "dayPeriod": "6-9"
-    },
-    {
-      "lessonName": "药物发现简史",
-      "teacherName": "李杨峰-[主讲];",
-      "classroom": "D1128",
-      "weekPeriod": "1-5,7-17",
-      "week": "三",
-      "dayPeriod": "8-9"
+      "lessonName": "软件工程实训",
+      "teacherName": "杨正益-[主讲];",
+      "classroom": "",
+      "weekPeriod": "19-21",
+      "week": "",
+      "dayPeriod": ""
     }
   ]
 }
