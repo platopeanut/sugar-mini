@@ -7,9 +7,18 @@ export function getDateMonth(date: Date = new Date()): number {
   return date.getMonth() + 1;
 }
 
+// 截断日期：将日期中的时分秒去除
+export function truncDate(date: Date): Date {
+  return new Date(Math.trunc(date.getTime() / (DAY_OF_SECONDS * 1000)) * (DAY_OF_SECONDS * 1000));
+}
+
 // 计算两个日期之间相隔的天数
 export function calcDaysBetween(date1: Date, date2: Date): number {
   return (date1.getTime() - date2.getTime()) / (DAY_OF_SECONDS * 1000);
+}
+
+export function calcTruncDaysBetween(date1: Date, date2: Date): number {
+  return calcDaysBetween(truncDate(date1), truncDate(date2));
 }
 
 // 计算两个日期之间相隔的秒数

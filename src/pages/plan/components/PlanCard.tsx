@@ -1,7 +1,12 @@
 import {View} from "@tarojs/components";
 import {FC} from "react";
 import {ExamItem} from "../repository";
-import {calcDaysBetween, calcSecondsBetween, stringifyDate} from "../../../utils/datetime";
+import {
+  calcDaysBetween,
+  calcSecondsBetween,
+  calcTruncDaysBetween,
+  stringifyDate,
+} from "../../../utils/datetime";
 import {interpolate} from "../../../utils/util";
 
 type PlanCardPropsType = {
@@ -11,8 +16,9 @@ type PlanCardPropsType = {
 function getPlanColor(startDate: Date, endDate: Date, currDate: Date = new Date()): string {
   if (calcSecondsBetween(currDate, endDate) > 0) return "#95a5a6"
   if (calcSecondsBetween(currDate, startDate) > 0) return "#3498db"
+  const limit = 10
   const day = calcDaysBetween(startDate, currDate)
-  const ratio = Math.min(day, 10) / 10
+  const ratio = Math.min(day, limit) / limit
   const color = ratio <= 0.5 ?
     interpolate([242, 12, 0], [255, 242, 0], ratio) :
     interpolate([255, 242, 0], [30, 150, 0], ratio)
@@ -20,10 +26,10 @@ function getPlanColor(startDate: Date, endDate: Date, currDate: Date = new Date(
 }
 
 function getPlanTint(startDate: Date, endDate: Date, currDate: Date = new Date()): string {
-  let day = Math.trunc(calcDaysBetween(startDate, currDate))
+  let day = calcTruncDaysBetween(startDate, currDate)
   if (day > 0) return `还有${day}天`
   if (day === 0) return '今天'
-  day = Math.trunc(calcDaysBetween(currDate, endDate))
+  day = calcTruncDaysBetween(currDate, endDate)
   return `已过${day}天`
 }
 
