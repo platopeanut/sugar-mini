@@ -10,6 +10,17 @@ function Index() {
   return (
     <View>
       <View style={{
+        textAlign: "center",
+        borderRadius: "10px",
+        boxShadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
+        padding: "20px",
+        margin: "20px auto",
+        width: "80%",
+        color: "#177cb0",
+        fontWeight: "bold"
+      }}
+      >宝贝加油鸭~</View>
+      <View style={{
         width: "90%",
         margin: "10px auto 5px",
         textAlign: "center"
