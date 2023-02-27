@@ -1,7 +1,7 @@
 import {FC} from "react";
+import Taro from "@tarojs/taro";
 import {Button, View} from "@tarojs/components";
 import {clearAllStorage} from "../../core/storage";
-import Taro from "@tarojs/taro";
 
 type SettingPropsType = {}
 
