@@ -17,3 +17,10 @@ export interface LessonViewItem extends LessonItem {
 export interface LessonDetailItem extends LessonItem {
   timePeriod: string
 }
+
+export type TimeListItem = {
+  startHour: number
+  startMinute: number
+  finishHour: number
+  finishMinute: number
+}

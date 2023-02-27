@@ -1,4 +1,6 @@
 // [a..b]
+import {UserType} from "../core/SugarUser";
+
 export function range(a: number, b: number): number[] {
   const li: number[] = []
   for (let i = a; i <= b; i++) li.push(i)
@@ -23,3 +25,22 @@ export function interpolate(v1: number[], v2: number[], ratio: number): number[]
   }
   return v
 }
+
+// User Map -> Object
+export function userMap2object<T>(mData: Map<UserType, T>) {
+  const oData = {};
+  mData.forEach((value, key) => {
+    oData[key.toString()] = value;
+  })
+  return oData;
+}
+
+// Object -> User Map
+export function object2UserMap<T>(oData: object) {
+  const mData = new Map<UserType, T>();
+  for (const key in oData) {
+    mData.set(key as UserType, oData[key]);
+  }
+  return mData;
+}
+

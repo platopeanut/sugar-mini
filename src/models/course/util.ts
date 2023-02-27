@@ -1,8 +1,8 @@
-import {LessonItem, LessonViewItem} from "./type";
 import {COLORS} from "../../core/theme";
-import {UserType} from "../../core/user";
-import {getAllLessonItems, getLessonItems} from "./repository";
+import {UserType} from "../../core/SugarUser";
 import {calcDaysBetween, dateAddDays} from "../../utils/datetime";
+import {LessonItem, LessonViewItem} from "./types";
+import courseModel from "../../models/course/model";
 
 // 获取date对应的header dates
 export function getHeaderDates(date: Date = new Date()): number[] {
@@ -37,8 +37,9 @@ export function parseWeekPeriod(weekPeriod: string): number[] {
   const periods = weekPeriod.slice(flag).split(',');
   const nums : number[] = [];
   for (const period of periods) {
-    const [start, end] = period.split('-');
-    for (let i = parseInt(start); i < parseInt(end); i++) {
+    let [start, end] = period.split('-');
+    end = end || start;
+    for (let i = parseInt(start); i <= parseInt(end); i++) {
       if (flag === 1 && i % 2 === 0) continue;
       if (flag === 2 && i % 2 === 1) continue;
       nums.push(i);
@@ -59,10 +60,16 @@ export function convertToLessonViewItems(lessonItems: LessonItem[], colorDict: M
   })
 }
 
+function getLessonItems(user: UserType, week: number) {
+  return courseModel.getCourse(user).filter(it =>
+    parseWeekPeriod(it.weekPeriod).indexOf(week) !== -1
+  );
+}
+
 export function getLessonViewItems(user: UserType, week: number): LessonViewItem[] {
   const colorDict = new Map<string, string>();
   let i = 0;
-  getAllLessonItems(user).forEach(it => {
+  courseModel.getCourse(user).forEach(it => {
     if (!colorDict.has(it.lessonName)) {
       colorDict.set(it.lessonName, COLORS[i])
       i = (i + 1) % COLORS.length;

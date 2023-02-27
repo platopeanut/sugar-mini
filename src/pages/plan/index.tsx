@@ -1,25 +1,48 @@
-import {View} from "@tarojs/components";
+import {useEffect, useState} from "react";
+import Taro, { usePullDownRefresh } from "@tarojs/taro";
+import { View } from "@tarojs/components";
+import UserBar from "../components/UserBar";
 import PlanCard from "./components/PlanCard";
-import {getDoneExamData, getWillExamData} from "./repository";
-
+import sugarUser, {UserType} from "../../core/SugarUser";
+import planModel from "../../models/plan/model";
+import {ExamItem} from "../../models/plan/types";
 
 function Index() {
-  const willItems = getWillExamData()
-  const doneItems = getDoneExamData()
-  const ratio = doneItems.length / (willItems.length + doneItems.length)
+  const [willItems, setWillItems] = useState<ExamItem[]>([]);
+  const [doneItems, setDoneItems] = useState<ExamItem[]>([]);
+  const [ratio, setRatio] = useState<number>(0);
+  const [user, setUser] = useState<UserType>(sugarUser.user);
+  const update = () => {
+    const willData = planModel.getWillExamData(sugarUser.user, new Date());
+    const doneData = planModel.getDoneExamData(sugarUser.user, new Date());
+    setWillItems(willData);
+    setDoneItems(doneData);
+    setRatio(willData.length / (willData.length + doneData.length));
+  }
+
+  useEffect(() => {
+    update();
+  }, [user]);
+
+  usePullDownRefresh(() => {
+    Taro.stopPullDownRefresh();
+    Taro.showLoading();
+    planModel.update().then(() => {
+      update();
+      Taro.hideLoading();
+      Taro.showToast({
+        title: "更新成功",
+        icon: "none"
+      });
+    });
+  })
+
   return (
     <View>
-      <View style={{
-        textAlign: "center",
-        borderRadius: "10px",
-        boxShadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
-        padding: "20px",
-        margin: "20px auto",
-        width: "80%",
-        color: "#177cb0",
-        fontWeight: "bold"
+      <UserBar onSwitchUser={() => setUser(sugarUser.user)} style={{
+        width: "100%",
       }}
-      >宝贝加油鸭~</View>
+      />
       <View style={{
         width: "90%",
         margin: "10px auto 5px",

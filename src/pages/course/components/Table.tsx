@@ -1,7 +1,7 @@
 import {FC} from "react";
 import {View} from "@tarojs/components";
 import {range} from "../../../utils/util";
-import {LessonViewItem} from "../type";
+import {LessonViewItem} from "../types";
 
 type TablePropsType = {
   lessonViewItems : LessonViewItem[],

@@ -1,6 +1,8 @@
-import {View} from '@tarojs/components'
+import {Button, View} from '@tarojs/components'
 import CardItem from "./components/CardItem"
 import bgImageBase64 from "../../images/bgImage";
+import MsgCard from "./components/MsgCard";
+import {clearAllStorage, printAllStorage} from "../../core/storage";
 
 type CardItemConfig = {
   iconPath: string
@@ -14,7 +16,7 @@ const cardItemsConfig: CardItemConfig[] = [
     iconPath: 'calendar',
     color: '#f06c79',
     name: '课表',
-    path: '../curriculum/index'
+    path: '../course/index'
   },
   {
     iconPath: 'clock',
@@ -25,13 +27,7 @@ const cardItemsConfig: CardItemConfig[] = [
 ]
 
 function Index() {
-  // Taro.request({
-  //   url: "http://platopeanut.top:9999/msg/all",
-  //   method: "GET",
-  //   success: (res) => {
-  //     console.log(res)
-  //   }
-  // })
+  printAllStorage();
   return (
     <View style={{
       backgroundImage: `url(${bgImageBase64})`,
@@ -39,7 +35,7 @@ function Index() {
       height: "700px",
     }}
     >
-      <View style={{width: "100%", height: "100px"}}></View>
+      <MsgCard />
       <View style={{
         margin: "0 auto",
         display: "grid",
@@ -60,6 +56,7 @@ function Index() {
         )
       }
       </View>
+      <Button onClick={()=>clearAllStorage()}>清除缓存</Button>
     </View>
   )
 }

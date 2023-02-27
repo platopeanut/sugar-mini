@@ -1,0 +1,13 @@
+import SugarError from "./SugarError";
+
+class NetworkError extends SugarError {
+  constructor(url: string, statusCode: number, errMsg: string, reqParams: any = null) {
+    super({url, statusCode, errMsg, reqParams}.toString());
+  }
+
+  static test(statusCode: number): boolean {
+    return statusCode >= 200 && statusCode < 300;
+  }
+}
+
+export default NetworkError;

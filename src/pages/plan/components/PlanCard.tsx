@@ -1,6 +1,6 @@
 import {View} from "@tarojs/components";
 import {FC} from "react";
-import {ExamItem} from "../repository";
+import {ExamItem} from "../../../models/plan/repository";
 import {
   calcDaysBetween,
   calcSecondsBetween,

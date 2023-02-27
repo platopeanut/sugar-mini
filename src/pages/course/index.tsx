@@ -8,30 +8,32 @@ import {
   calcCurrWeek,
   getHeaderDates,
   getLessonViewItems
-} from "./util";
-import {START_DATE} from "./repository";
-import {LessonDetailItem, LessonItem, LessonViewItem} from "./type";
-import {UserType} from "../../core/user";
+} from "../../models/course/util";
 import LessonDetail from "./components/LessonDetail";
 import {dateAddDays, getDateMonth} from "../../utils/datetime";
+import sugarUser, {UserType} from "../../core/SugarUser";
+import courseModel from "../../models/course/model";
+import {LessonDetailItem, LessonItem, LessonViewItem} from "../../models/course/types";
 
 export default function Curriculum() {
   const [date, setDate] = useState(new Date());
+  const [user, setUser] = useState<UserType>(sugarUser.user);
   const [month, setMonth] = useState(getDateMonth(date));
-  const [week, setWeek] = useState(calcCurrWeek(START_DATE, date));
+  const [week, setWeek] = useState(calcCurrWeek(courseModel.getStartDate(user), date));
   const [headerDates, setHeaderDates] = useState(getHeaderDates(date));
-  const [user, setUser] = useState<UserType>("Chen");
   const [lessonViewItems, setLessonViewItems] = useState<LessonViewItem[]>(getLessonViewItems(user, week));
   const [lessonDetailItem, setLessonDetailItem] = useState<LessonDetailItem | null>(null);
 
-  // 一旦date改变，对应产生的变化
-  useEffect(() => {
+  const update = () => {
     setMonth(getDateMonth(date));
     setHeaderDates(getHeaderDates(date));
-    const currWeek = calcCurrWeek(START_DATE, date);
+    const currWeek = calcCurrWeek(courseModel.getStartDate(user), date);
     setWeek(currWeek);
     setLessonViewItems(getLessonViewItems(user, currWeek));
-  }, [date, user]);
+  }
+
+  // 一旦date改变，对应产生的变化
+  useEffect(update, [date, user]);
 
   // 更新pageDate
   const switchWeek = (deltaWeek: number) => {
@@ -54,8 +56,18 @@ export default function Curriculum() {
         user={user}
         onTapLeft={()=>{ switchWeek(-1) }}
         onTapRight={()=>{ switchWeek(1) }}
-        onTapUser={()=>{ setUser(currUser => currUser === "Chen" ? "Li" : "Chen") }}
-        onTapUpdate={()=>{ Taro.showToast({title: 'update'}).then() }}
+        onTapUser={()=>{ setUser(sugarUser.switchUser()) }}
+        onTapUpdate={()=>{
+          Taro.showLoading();
+          courseModel.update().then(() => {
+            Taro.hideLoading();
+            update();
+            Taro.showToast({
+              title: "更新成功",
+              icon: "none"
+            });
+          });
+        }}
       />
       <LessonDetail detailItem={lessonDetailItem} onClose={() => {setLessonDetailItem(null)}} />
     </View>

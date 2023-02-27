@@ -1,3 +1,4 @@
 export default definePageConfig({
-  navigationBarTitleText: '安排'
+  navigationBarTitleText: '安排',
+  enablePullDownRefresh: true
 })
