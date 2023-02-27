@@ -1,8 +1,8 @@
-import {Button, View} from '@tarojs/components'
+import {View} from '@tarojs/components'
 import CardItem from "./components/CardItem"
 import bgImageBase64 from "../../images/bgImage";
 import MsgCard from "./components/MsgCard";
-import {clearAllStorage, printAllStorage} from "../../core/storage";
+import {printAllStorage} from "../../core/storage";
 
 type CardItemConfig = {
   iconPath: string
@@ -23,6 +23,12 @@ const cardItemsConfig: CardItemConfig[] = [
     color: '#67bdde',
     name: '安排',
     path: '../plan/index'
+  },
+  {
+    iconPath: 'settings',
+    color: '#21252b',
+    name: '设置',
+    path: '../setting/index'
   }
 ]
 
@@ -56,7 +62,6 @@ function Index() {
         )
       }
       </View>
-      <Button onClick={()=>clearAllStorage()}>清除缓存</Button>
     </View>
   )
 }

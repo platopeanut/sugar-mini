@@ -1,10 +1,11 @@
 import {FC} from "react";
 import {View} from "@tarojs/components";
 import {range} from "../../../utils/util";
-import {LessonViewItem} from "../types";
+import {LessonViewItem} from "../../../models/course/types";
 
 type TablePropsType = {
-  lessonViewItems : LessonViewItem[],
+  dayOfWeek: number
+  lessonViewItems : LessonViewItem[]
   onTapItem(lessonViewItem: LessonViewItem): void
 }
 
@@ -25,6 +26,14 @@ const Table: FC<TablePropsType> = (props) => {
         columnGap: "1px"
       }}
       >
+        <View style={{
+          height: `${CELL_HEIGHT * 13}px`,
+          backgroundImage: "linear-gradient(white, #afdde8, white)",
+          gridColumn: props.dayOfWeek,
+          gridRowStart: 1,
+          gridRowEnd: 14,
+        }}
+        ></View>
         {
           props.lessonViewItems.map(it =>
             <View key='it' onClick={() => {props.onTapItem(it)}} style={{

@@ -2,6 +2,12 @@ import {prefix} from "./util";
 
 const DAY_OF_SECONDS = 60 * 60 * 24;
 
+export function getDayOfWeek(date: Date = new Date()): number {
+  let idx = date.getDay();
+  if (idx === 0) idx = 7;
+  return idx - 1;
+}
+
 // 获取date对应的month
 export function getDateMonth(date: Date = new Date()): number {
   return date.getMonth() + 1;

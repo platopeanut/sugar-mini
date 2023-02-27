@@ -5,12 +5,12 @@ import Header from "./components/Header";
 import Table from "./components/Table";
 import Footer from "./components/Footer";
 import {
-  calcCurrWeek,
+  calcCurrWeek, getDayPeriodStr,
   getHeaderDates,
   getLessonViewItems
 } from "../../models/course/util";
 import LessonDetail from "./components/LessonDetail";
-import {dateAddDays, getDateMonth} from "../../utils/datetime";
+import {dateAddDays, getDateMonth, getDayOfWeek} from "../../utils/datetime";
 import sugarUser, {UserType} from "../../core/SugarUser";
 import courseModel from "../../models/course/model";
 import {LessonDetailItem, LessonItem, LessonViewItem} from "../../models/course/types";
@@ -41,15 +41,15 @@ export default function Curriculum() {
   }
 
   const onTapItem = (lessonViewItem : LessonViewItem) => {
-    const detailItem = lessonViewItem as LessonItem as LessonDetailItem
-    detailItem.timePeriod = "08:30~10:10"
-    setLessonDetailItem(detailItem)
+    const detailItem = lessonViewItem as LessonItem as LessonDetailItem;
+    detailItem.timePeriod = getDayPeriodStr(detailItem.dayPeriod, courseModel.getTimeList(user));
+    setLessonDetailItem(detailItem);
   }
 
   return (
     <View>
       <Header month={month} dateList={headerDates} />
-      <Table lessonViewItems={lessonViewItems} onTapItem={onTapItem} />
+      <Table dayOfWeek={getDayOfWeek(date) + 1} lessonViewItems={lessonViewItems} onTapItem={onTapItem} />
       <View style={{ width: "100%", height: "50px" }} />
       <Footer
         week={week}

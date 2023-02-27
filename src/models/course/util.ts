@@ -1,8 +1,9 @@
 import {COLORS} from "../../core/theme";
 import {UserType} from "../../core/SugarUser";
 import {calcDaysBetween, dateAddDays} from "../../utils/datetime";
-import {LessonItem, LessonViewItem} from "./types";
+import {LessonItem, LessonViewItem, TimeListItem} from "./types";
 import courseModel from "../../models/course/model";
+import {prefix} from "../../utils/util";
 
 // 获取date对应的header dates
 export function getHeaderDates(date: Date = new Date()): number[] {
@@ -76,4 +77,12 @@ export function getLessonViewItems(user: UserType, week: number): LessonViewItem
     }
   })
   return convertToLessonViewItems(getLessonItems(user, week), colorDict)
+}
+
+export function getDayPeriodStr(dayPeriod: string, timeList: TimeListItem[]): string {
+  const [startIdx, endIdx] = parseDayPeriod(dayPeriod);
+  return prefix(timeList[startIdx - 1].startHour) + ':'
+       + prefix(timeList[startIdx - 1].startMinute) + ' - '
+       + prefix(timeList[endIdx - 1].finishHour) + ':'
+       + prefix(timeList[endIdx - 1].finishMinute);
 }

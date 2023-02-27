@@ -1,7 +1,7 @@
 import {FC} from "react";
 import {View} from "@tarojs/components";
 import {AtModal, AtModalContent, AtModalHeader} from "taro-ui";
-import {LessonDetailItem} from "../types";
+import {LessonDetailItem} from "../../../models/course/types";
 
 type LessonDetailPropsType = {
   detailItem: LessonDetailItem | null
