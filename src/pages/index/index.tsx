@@ -1,8 +1,10 @@
-import {View} from '@tarojs/components'
-import CardItem from "./components/CardItem"
-import bgImageBase64 from "../../images/bgImage";
+import {useEffect, useState} from "react";
+import {View} from '@tarojs/components';
+import CardItem from "./components/CardItem";
 import MsgCard from "./components/MsgCard";
 import {printAllStorage} from "../../core/storage";
+import pictureModel from "../../models/picture/model";
+import Taro from "@tarojs/taro";
 
 type CardItemConfig = {
   iconPath: string
@@ -33,12 +35,25 @@ const cardItemsConfig: CardItemConfig[] = [
 ]
 
 function Index() {
+  const [bgImageBase64, setBgImageBase64] = useState("");
+
+  useEffect(() => {
+    Taro.showLoading({ title: "加载背景图" });
+    pictureModel.get("bg.jpg").then(picItem => {
+      if (picItem) setBgImageBase64(picItem.base64);
+      Taro.hideLoading();
+    })
+  }, []);
+
+
   printAllStorage();
   return (
     <View style={{
-      backgroundImage: `url(${bgImageBase64})`,
+      backgroundImage: `url(data:image/jpeg;base64,${bgImageBase64})`,
+      backgroundPosition: "center",
+      backgroundAttachment: "fixed",
       backgroundSize: "cover",
-      height: "700px",
+      height: "1000px"
     }}
     >
       <MsgCard />
@@ -67,4 +82,4 @@ function Index() {
 }
 
 
-export default Index
+export default Index;

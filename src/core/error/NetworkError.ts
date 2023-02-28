@@ -2,7 +2,7 @@ import SugarError from "./SugarError";
 
 class NetworkError extends SugarError {
   constructor(url: string, statusCode: number, errMsg: string, reqParams: any = null) {
-    super({url, statusCode, errMsg, reqParams}.toString());
+    super(JSON.stringify({url, statusCode, errMsg, reqParams}));
   }
 
   static test(statusCode: number): boolean {

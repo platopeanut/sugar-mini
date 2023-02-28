@@ -26,3 +26,14 @@ export async function sugarRequest<ResType>(
     throw new RequestError<ResType>(url, res.data, data);
   return res.data.data;
 }
+
+export async function sugarGetImage(imgName: string) {
+  const res = await Taro.request<ArrayBuffer>({
+    url: BASE_URL + "/images/" + imgName,
+    method: "GET",
+    responseType: "arraybuffer"
+  })
+  if (!NetworkError.test(res.statusCode))
+    throw new NetworkError("/images/" + imgName, res.statusCode, res.errMsg);
+  return res.data;
+}
