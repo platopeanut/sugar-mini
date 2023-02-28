@@ -3,7 +3,8 @@ import {LessonItem, TimeListItem} from "./types";
 import {UserType} from "../../core/SugarUser";
 
 export async function getCourses(user: UserType) {
-  return await sugarRequest<LessonItem[]>("/course/" + user, "GET");
+  const rawItems = await sugarRequest<LessonItem[]>("/course/" + user, "GET");
+  return rawItems.filter(it => it.dayPeriod !== null);
 }
 
 export async function getTimeList(user: UserType) {
