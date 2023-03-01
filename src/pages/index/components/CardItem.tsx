@@ -1,10 +1,10 @@
 import {FC} from "react";
 import {View} from "@tarojs/components";
 import Taro from "@tarojs/taro";
+import SugarIcon from "../../components/SugarIcon";
 
 type CardItemPropsType = {
-  iconPath: string
-  color: string
+  icon: string
   name: string
   path: string
   row: number
@@ -20,8 +20,7 @@ const CardItem: FC<CardItemPropsType> = (props) => {
         }).then()
       }}
       style={{
-        backgroundColor: "rgba(255, 255, 255, 0.9)",
-        color: props.color,
+        backgroundColor: "rgba(255, 255, 255, 1)",
         gridRow: props.row,
         gridColumn: props.column,
         textAlign: "center",
@@ -31,7 +30,7 @@ const CardItem: FC<CardItemPropsType> = (props) => {
         boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
       }}
     >
-      <View className={`at-icon at-icon-${props.iconPath}`}></View>
+      <SugarIcon name={props.icon} />
       <View>{props.name}</View>
     </View>
   )

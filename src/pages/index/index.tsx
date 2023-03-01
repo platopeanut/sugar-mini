@@ -1,34 +1,31 @@
 import {useEffect, useState} from "react";
+import Taro from "@tarojs/taro";
 import {View} from '@tarojs/components';
 import CardItem from "./components/CardItem";
 import MsgCard from "./components/MsgCard";
 import {printAllStorage} from "../../core/storage";
 import pictureModel from "../../models/picture/model";
-import Taro from "@tarojs/taro";
+import {SugarIcons} from "../components/SugarIcon";
 
 type CardItemConfig = {
-  iconPath: string
-  color: string
+  icon: string
   name: string
   path: string
 }
 
 const cardItemsConfig: CardItemConfig[] = [
   {
-    iconPath: 'calendar',
-    color: '#f06c79',
+    icon: SugarIcons.course,
     name: '课表',
     path: '../course/index'
   },
   {
-    iconPath: 'clock',
-    color: '#67bdde',
+    icon: SugarIcons.plan,
     name: '安排',
     path: '../plan/index'
   },
   {
-    iconPath: 'settings',
-    color: '#21252b',
+    icon: SugarIcons.setting,
     name: '设置',
     path: '../setting/index'
   }
@@ -42,11 +39,10 @@ function Index() {
     pictureModel.get("bg.jpg").then(picItem => {
       if (picItem) setBgImageBase64(picItem.base64);
       Taro.hideLoading();
-    })
+    });
+    printAllStorage();
   }, []);
 
-
-  printAllStorage();
   return (
     <View style={{
       backgroundImage: `url(data:image/jpeg;base64,${bgImageBase64})`,
@@ -67,8 +63,7 @@ function Index() {
         cardItemsConfig.map((it, index) =>
           <CardItem
             key='it'
-            iconPath={it.iconPath}
-            color={it.color}
+            icon={it.icon}
             name={it.name}
             path={it.path}
             row={Math.trunc(index / 2) + 1}

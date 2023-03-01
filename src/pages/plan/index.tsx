@@ -1,11 +1,12 @@
 import {useEffect, useState} from "react";
 import Taro, { usePullDownRefresh } from "@tarojs/taro";
 import { View } from "@tarojs/components";
-import UserBar from "../components/UserBar";
+import UserIcon from "../components/UserIcon";
 import PlanCard from "./components/PlanCard";
 import sugarUser, {UserType} from "../../core/SugarUser";
 import planModel from "../../models/plan/model";
 import {ExamItem} from "../../models/plan/types";
+import SugarIcon, {SugarIcons} from "../components/SugarIcon";
 
 function Index() {
   const [willItems, setWillItems] = useState<ExamItem[]>([]);
@@ -24,8 +25,7 @@ function Index() {
     update();
   }, [user]);
 
-  usePullDownRefresh(() => {
-    Taro.stopPullDownRefresh();
+  function updateData() {
     Taro.showLoading();
     planModel.update().then(() => {
       update();
@@ -35,20 +35,20 @@ function Index() {
         icon: "none"
       });
     });
+  }
+
+  usePullDownRefresh(() => {
+    Taro.stopPullDownRefresh();
+    updateData();
   })
 
   return (
     <View>
-      <UserBar onSwitchUser={() => setUser(sugarUser.user)} style={{
-        width: "100%",
-      }}
-      />
-      <View style={{
-        width: "90%",
-        margin: "10px auto 5px",
-        textAlign: "center"
-      }}
-      >{`${doneItems.length} / ${willItems.length + doneItems.length}`}</View>
+      <View style={{display: "flex"}}>
+        <SugarIcon name={SugarIcons.update} onTap={updateData} style={{flex: 1}} />
+        <View style={{ flex: 1, margin: "20px auto", textAlign: "center" }} >{`${doneItems.length} / ${willItems.length + doneItems.length}`}</View>
+        <UserIcon user={user} onSwitchUser={() => setUser(sugarUser.switchUser())}  style={{flex: 1}} />
+      </View>
       <View style={{
         display: "flex",
         flexDirection: "row",
