@@ -1,6 +1,5 @@
 import {View} from "@tarojs/components";
 import {FC} from "react";
-import {ExamItem} from "../../../models/plan/repository";
 import {
   calcDaysBetween,
   calcSecondsBetween,
@@ -8,6 +7,7 @@ import {
   stringifyDate,
 } from "../../../utils/datetime";
 import {interpolate} from "../../../utils/util";
+import {ExamItem} from "../../../models/plan/types";
 
 type PlanCardPropsType = {
   item: ExamItem

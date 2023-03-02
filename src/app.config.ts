@@ -4,6 +4,7 @@ export default defineAppConfig({
     'pages/course/index',
     'pages/plan/index',
     'pages/setting/index',
+    'pages/todo/index',
   ],
   window: {
     backgroundTextStyle: 'light',

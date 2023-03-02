@@ -76,7 +76,7 @@ const MsgCard: FC<MsgCardPropsType> = () => {
         }}
         />
         <SugarIcon
-          name={isEdit ? SugarIcons.closeRed : SugarIcons.edit}
+          name={isEdit ? SugarIcons.close : SugarIcons.edit}
           style={{flex: 1}}
           onTap={() => { setIsEdit(prevIsEdit => !prevIsEdit); }}
         />

@@ -28,6 +28,12 @@ const cardItemsConfig: CardItemConfig[] = [
     color: '#1296db'
   },
   {
+    icon: SugarIcons.todo,
+    name: 'TODO',
+    path: '../todo/index',
+    color: '#1289A7'
+  },
+  {
     icon: SugarIcons.setting,
     name: '设置',
     path: '../setting/index',

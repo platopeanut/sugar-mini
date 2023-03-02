@@ -11,7 +11,7 @@ type UserIconPropsType = {
 const UserIcon: FC<UserIconPropsType> = (props) => {
   return (
     <SugarIcon
-      name={props.user === "Li" ? SugarIcons.girl : SugarIcons.boy}
+      name={props.user === "Li" ? SugarIcons.girl : props.user === "Chen" ? SugarIcons.boy : SugarIcons.we}
       onTap={props.onSwitchUser}
       style={props.style}
     />
