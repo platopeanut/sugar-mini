@@ -6,6 +6,7 @@ import SugarIcon from "../../components/SugarIcon";
 type CardItemPropsType = {
   icon: string
   name: string
+  color: string
   path: string
   row: number
   column: number
@@ -21,6 +22,7 @@ const CardItem: FC<CardItemPropsType> = (props) => {
       }}
       style={{
         backgroundColor: "rgba(255, 255, 255, 1)",
+        color: props.color,
         gridRow: props.row,
         gridColumn: props.column,
         textAlign: "center",

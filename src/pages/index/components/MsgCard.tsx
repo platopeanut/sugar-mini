@@ -47,7 +47,7 @@ const MsgCard: FC<MsgCardPropsType> = () => {
   return (
     <View style={{
       backgroundColor: "rgba(255,255,255,0.95)",
-      margin: "0 auto",
+      paddingTop: "20px",
       width: "100%",
       borderBottomLeftRadius: "5px",
       borderBottomRightRadius: "5px",
@@ -56,7 +56,7 @@ const MsgCard: FC<MsgCardPropsType> = () => {
       {
         isEdit ?
           (<View style={{height: "120px"}}>
-            <Textarea style={{width: "100%", height: "120px", border: "1px solid #eaeaea"}} ref={textInputRef} />
+            <Textarea style={{width: "100%", height: "120px", padding: "0 10px", border: "1px solid #eaeaea"}} ref={textInputRef} />
           </View>)
           :
           (<View style={{height: "120px"}}>

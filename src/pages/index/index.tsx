@@ -11,23 +11,27 @@ type CardItemConfig = {
   icon: string
   name: string
   path: string
+  color: string
 }
 
 const cardItemsConfig: CardItemConfig[] = [
   {
     icon: SugarIcons.course,
     name: '课表',
-    path: '../course/index'
+    path: '../course/index',
+    color: '#f06c79'
   },
   {
     icon: SugarIcons.plan,
     name: '安排',
-    path: '../plan/index'
+    path: '../plan/index',
+    color: '#1296db'
   },
   {
     icon: SugarIcons.setting,
     name: '设置',
-    path: '../setting/index'
+    path: '../setting/index',
+    color: '#269d81'
   }
 ]
 
@@ -66,6 +70,7 @@ function Index() {
             icon={it.icon}
             name={it.name}
             path={it.path}
+            color={it.color}
             row={Math.trunc(index / 2) + 1}
             column={index % 2 + 1}
           />
