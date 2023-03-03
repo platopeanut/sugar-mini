@@ -42,10 +42,10 @@ const TodoItemCard: FC<{
       />
       {
         isFold ? (<View></View>) : (<View style={{paddingBottom: "10px"}}>
-          <TodoInfoItem label='Deadline' value={props.todoItem.deadline} />
-          <TodoInfoItem label='Priority' value={props.todoItem.priority.toString()} />
-          <TodoInfoItem label='User' value={props.todoItem.user} />
-          <TodoInfoItem label='Info' value={props.todoItem.info} />
+          <TodoInfoItem label='DDL' value={props.todoItem.deadline} />
+          <TodoInfoItem label='LV' value={props.todoItem.priority.toString()} />
+          {/*<TodoInfoItem label='User' value={props.todoItem.user} />*/}
+          <TodoInfoItem label='INFO' value={props.todoItem.info} />
         </View>)
       }
     </View>

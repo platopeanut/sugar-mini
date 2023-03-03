@@ -10,13 +10,7 @@ import sugarUser from "../../core/SugarUser";
 const Todo: FC = () => {
   const [todoItems, setTodoItems] = useState<TodoItem[]>([]);
   const [user, setUser] = useState(sugarUser.user);
-  function update() {
-    Taro.showLoading();
-    getAllTodo().then(items => {
-      setTodoItems(items);
-      Taro.hideLoading();
-    });
-  }
+  function update() { getAllTodo().then(items => { setTodoItems(items); }); }
   useEffect(() => { update() }, []);
 
   const [currTodoItems, setCurrTodoItems] = useState<TodoItem[]>([]);
@@ -24,8 +18,9 @@ const Todo: FC = () => {
   const [tagIdx, setTagIdx] = useState(0);
 
   useEffect(() => {
-    const currTags = getTodoItemsTags(todoItems.filter(it => it.user === user));
-    setCurrTodoItems(todoItems.filter(it => it.tag === currTags[tagIdx]));
+    const currUserTodoItems = todoItems.filter(it => it.user === user);
+    const currTags = getTodoItemsTags(currUserTodoItems);
+    setCurrTodoItems(currUserTodoItems.filter(it => it.tag === currTags[tagIdx]));
     setTags(currTags);
   }, [todoItems, user, tagIdx]);
 
