@@ -43,6 +43,8 @@ const Table: FC<TablePropsType> = (props) => {
               gridRowEnd: it.endRow + 1,
               display: "flex",
               flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
               fontSize: "12px",
               textAlign: "center",
               borderRadius: "5px",

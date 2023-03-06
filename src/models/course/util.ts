@@ -28,6 +28,7 @@ export function parseDayOfWeek(dayOfWeek: string): number {
 
 export function parseDayPeriod(dayPeriod: string): [number, number] {
   const items = dayPeriod.split("-")
+  if (items.length === 1) return [parseInt(items[0]), parseInt(items[0])]
   return [parseInt(items[0]), parseInt(items[1])]
 }
 
