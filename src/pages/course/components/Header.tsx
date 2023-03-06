@@ -51,7 +51,8 @@ const Header: FC<HeaderPropsType> = (props) => {
         >{dayNamesOfWeek.map(it => <Text key={it} style={{
           flex: 1,
           fontWeight: "bold",
-          textAlign: "center"
+          textAlign: "center",
+          fontSize: "15px",
         }}
         >{it}</Text>)}</View>
         <View style={{
@@ -61,7 +62,8 @@ const Header: FC<HeaderPropsType> = (props) => {
         }}
         >{props.dateList.map(it => <Text key={it} style={{
           flex: 1,
-          textAlign: "center"
+          textAlign: "center",
+          fontSize: "15px",
         }}
         >{prefix(it)}</Text>)}</View>
       </View>

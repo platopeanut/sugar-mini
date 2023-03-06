@@ -5,13 +5,12 @@ const _COLORS: string[] = [
   '#87ceca',
   '#fecb62',
   '#f0b7e2',
-  '#6bc235',
+  '#fc9d99',
   '#ff9b6a',
   '#84af9b',
   '#e286ab',
   '#79cea5',
   '#ddd38c',
-  '#fc9d99',
   '#facdae',
   '#c7c8a8',
   '#c9ba83',
@@ -20,6 +19,7 @@ const _COLORS: string[] = [
   '#d2a495',
   '#8abeb2',
   '#269d81',
+  '#6bc235',
   '#fecb62',
 ]
 // shuffle(_COLORS);

@@ -45,7 +45,7 @@ const Table: FC<TablePropsType> = (props) => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              fontSize: "12px",
+              fontSize: "15px",
               textAlign: "center",
               borderRadius: "5px",
               boxShadow: "rgba(67, 71, 85, 0.27) 0 0 0.25em, rgba(90, 125, 188, 0.05) 0 0.25em 1em",
