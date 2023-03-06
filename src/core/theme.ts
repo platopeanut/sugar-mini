@@ -1,14 +1,15 @@
-export const COLORS: string[] = [
-  '#ff9b6a',
+const _COLORS: string[] = [
+  '#67bdde',
+  '#f06c79',
   '#addc81',
   '#87ceca',
   '#fecb62',
-  '#84af9b',
-  '#f06c79',
-  '#e286ab',
-  '#67bdde',
-  '#79cea5',
   '#f0b7e2',
+  '#6bc235',
+  '#ff9b6a',
+  '#84af9b',
+  '#e286ab',
+  '#79cea5',
   '#ddd38c',
   '#fc9d99',
   '#facdae',
@@ -18,7 +19,8 @@ export const COLORS: string[] = [
   '#f9a782',
   '#d2a495',
   '#8abeb2',
-  '#6bc235',
   '#269d81',
   '#fecb62',
 ]
+// shuffle(_COLORS);
+export const COLORS = _COLORS;
