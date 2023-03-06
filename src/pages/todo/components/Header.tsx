@@ -11,6 +11,7 @@ const Header: FC<{
   tagIdx: number
   onTapTag: (idx: number) => void
   onTapUpdate: () => void
+  onTapAdd: () => void
 }> = (props) => {
   return (
     <View style={{
@@ -24,6 +25,7 @@ const Header: FC<{
       <View style={{display: "flex"}}>
         <UserIcon user={props.user} onSwitchUser={props.onSwitchUser} style={{flex: 1}} />
         <SugarIcon name={SugarIcons.update} style={{flex: 1}} onTap={props.onTapUpdate} />
+        <SugarIcon name={SugarIcons.plus} style={{flex: 1}} onTap={props.onTapAdd} />
       </View>
       <View style={{
         display: "flex",

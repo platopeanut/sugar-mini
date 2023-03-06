@@ -1,7 +1,7 @@
 import {FC, useEffect, useState} from "react";
-import Taro from "@tarojs/taro";
+import Taro, {useDidShow} from "@tarojs/taro";
 import {View} from "@tarojs/components";
-import {getAllTodo, postTodo} from "./network";
+import {deleteTodo, getAllTodo, postTodo} from "./network";
 import TodoItemCard from "./components/TodoItemCard";
 import {TodoItem} from "./types";
 import Header from "./components/Header";
@@ -12,6 +12,7 @@ const Todo: FC = () => {
   const [user, setUser] = useState(sugarUser.user);
   function update() { getAllTodo().then(items => { setTodoItems(items); }); }
   useEffect(() => { update() }, []);
+  useDidShow(() => update());
 
   const [currTodoItems, setCurrTodoItems] = useState<TodoItem[]>([]);
   const [tags, setTags] = useState<string[]>([]);
@@ -34,6 +35,7 @@ const Todo: FC = () => {
           update();
           Taro.showToast({ title: "更新成功", icon: "success" });
         }}
+        onTapAdd={() => { Taro.navigateTo({ url: './edit/index' }); }}
       />
       <View style={{marginTop: "100px"}}>
         {
@@ -44,6 +46,8 @@ const Todo: FC = () => {
               it.status = status;
               postTodo(it).then(items => setTodoItems(items));
             }}
+            onModify={() => { Taro.navigateTo({ url: './edit/index?_id=' + it._id }); }}
+            onDelete={() => { deleteTodo(it._id!).then(items => setTodoItems(items)); }}
           />)
         }
       </View>

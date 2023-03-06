@@ -6,6 +6,8 @@ import {getAllTodoItemStatus, TodoItem, TodoItemStatus} from "../types";
 const TodoItemCard: FC<{
   todoItem: TodoItem
   onChangeStatus: (status: TodoItemStatus) => void
+  onModify: () => void
+  onDelete: () => void
 }> = (props) => {
   const statusList = getAllTodoItemStatus();
   let index = -1;
@@ -41,7 +43,18 @@ const TodoItemCard: FC<{
         }}
       />
       {
-        isFold ? (<View></View>) : (<View style={{paddingBottom: "10px"}}>
+        isFold ? (<View></View>) : (<View
+          style={{paddingBottom: "10px"}}
+          onLongPress={() => {
+            Taro.showActionSheet({
+              itemList: ["Modify", "Delete"],
+              success: function (res) {
+                if (res.tapIndex === 0) props.onModify();
+                else if (res.tapIndex === 1) props.onDelete();
+              }
+            })
+          }}
+        >
           <TodoInfoItem label='DDL' value={props.todoItem.deadline} />
           <TodoInfoItem label='LV' value={props.todoItem.priority.toString()} />
           {/*<TodoInfoItem label='User' value={props.todoItem.user} />*/}
